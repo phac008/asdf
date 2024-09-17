@@ -2,12 +2,13 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: sx-cnp-oss-kubevirt-template
-  title: sx-cnp-oss kubevirt Template VMs
+  title: kubevirt VMs Template
   description: Run Demo VM n kubevirt provisoned with ArgoCD
   tags:
     - virtualization
     - metalstack
     - kubevirt
+    - sx-cnp-oss
 spec:
   owner: user:phac008
   type: system
