@@ -7,7 +7,8 @@ ${{environment}}:
   cores: ${{values.cores}}
   memory: ${{values.memory}}
   initpwd: ${{values.initpwd}}
-  application_id: ${{values.application_id}}
+  application_id: ${{values.team}}
+  team: ${{values.application_id}}
  # running: ${{values.running}}
   environment: ${{environment}}
 {%- endfor %}

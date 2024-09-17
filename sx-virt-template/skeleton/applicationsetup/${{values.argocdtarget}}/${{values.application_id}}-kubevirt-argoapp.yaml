@@ -19,14 +19,14 @@ spec:
         - values.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: adn-${{values.team}}
+    namespace: ${{values.team}}-${{values.application_id}}
   syncPolicy:
     automated: 
       prune: true
       selfHeal: true
       allowEmpty: true
     syncOptions:
-    - CreateNamespace=false      
+    - CreateNamespace=true      
     retry:
       limit: 0 # number of failed sync attempt retries; unlimited number of attempts if less than 0
       backoff:
