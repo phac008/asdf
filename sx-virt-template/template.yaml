@@ -23,17 +23,18 @@ spec:
         - os
         - initpwd
         - team
+        - argocdtarget
       properties:
         application_id:
-          title: Name
+          title: Application Name
           type: string
-          description: Unique name of this vm
+          description: Unique name of this Application (VM)
         description:
           title: Description
           type: string
-          description: Help others understand what this vm is for.
+          description: Help others understand what this Application (VM) is for.
         cores:
-          title: Number of Cores
+          title: Number of Cores 
           type: string       
           default: '1'
         memory:
@@ -43,7 +44,7 @@ spec:
         environments:
           title: Environments
           type: array
-          description: Environments needed by this vm
+          description: Environments (Stages) needed by this vm, min 1. needed!
           items:
             type: string
             enum: 
@@ -73,25 +74,23 @@ spec:
         sshkey:
           title: single ssh-key
           type: string
-          description: "Optional: add ssh-key for vmlogin"  
+          description: "Optional: add ssh-key for login to VM"  
         team:
           title: Choose Team
           type: string
-          description: Owning Team of this vm, target repo for argo application
+          description: Owning Team of this VM, target repo for argo application
           ui:field: MyGroupsPicker
           ui:options: {}
-
-    - title: Choose owning team and location
-      required:
-        - repoUrl
-        - argocdtarget
-      properties:
         argocdtarget:
           title: argocd target directory
           type: string
-          description: Directory where argo application manifest is beeing deployed in ${{ parameters.team }} repo
+          description: Directory where argo application manifest is beeing deployed in team repo
           default: k3d-apps
 
+    - title: Choose Location
+      required:
+        - repoUrl
+      properties:
         repoUrl:
           title: Repository Location
           type: string
