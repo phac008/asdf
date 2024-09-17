@@ -9,7 +9,7 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
+  project: ${{values.team}}-project
   source:
     repoURL: https://github.com/${{values.repoUrlowner}}/${{values.repoUrlRepo}}.git
     targetRevision: main
