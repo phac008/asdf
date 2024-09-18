@@ -61,6 +61,8 @@ spec:
               - prod
               - test
               - qa
+          uniqueItems: true
+          ui:widget: checkboxes
         argocdtarget:
           title: argocd target directory
           type: string
