@@ -124,6 +124,7 @@ spec:
         repoVisibility: public
         deleteBranchOnMerge: true
         protectDefaultBranch: false
+        update: true
         
     - id: template-applicationsetup
       name: Fetch Namespacesetup Skeleton + Template
