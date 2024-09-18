@@ -55,11 +55,10 @@ spec:
           title: Environments
           type: string
           description: Environments needed by this vm
-          items:
-            enum:
-              - prod
-              - test
-              - qa
+          enum:
+            - prod
+            - test
+            - qa
           uniqueItems: true
           default: prod
         argocdtarget:
