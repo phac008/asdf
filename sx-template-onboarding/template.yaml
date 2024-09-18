@@ -109,7 +109,7 @@ spec:
         copyWithoutTemplating: []
         values:
           description: ${{ parameters.description }}
-          team: ${{ steps['catalogFetchGroup'].output.entity.metadata.name }}
+          team: ${{ steps['catalogFetch'].output.entity.metadata.name }}
           repoUrlRepo: ${{ (parameters.repoUrl | parseRepoUrl)["repo"] }}
           repoUrlowner: ${{ (parameters.repoUrl | parseRepoUrl)["owner"] }}
           environments: ${{ parameters.environments }}
