@@ -21,6 +21,7 @@ spec:
         - team
         - instances
         - type
+        - environments
         - argocdtarget
       properties:
         cluster_id:
