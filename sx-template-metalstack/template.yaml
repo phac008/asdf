@@ -53,16 +53,16 @@ spec:
           ui:widget: checkboxes
         environments:
           title: Environments
-          type: array
+          type: string
           description: Environments needed by this vm
           items:
-            type: boolean
             enum:
               - prod
               - test
               - qa
           uniqueItems: true
           ui:widget: checkboxes
+          default: prod
         argocdtarget:
           title: argocd target directory
           type: string
