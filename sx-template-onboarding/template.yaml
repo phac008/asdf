@@ -95,6 +95,7 @@ spec:
         targetPath: platform-apps/charts/team-onboarding
         branchName: onboarding-team-${{ steps['catalogFetch'].output.entity.metadata.name }}
         targetBranchName: main
+        update: true
         token: ${{ secrets.USER_OAUTH_TOKEN }}
         gitAuthorName: ${{ user.entity.metadata.name }}
         gitAuthorEmail: ${{ user.entity.spec.profile.email }}
