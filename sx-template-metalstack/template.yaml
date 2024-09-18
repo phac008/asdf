@@ -1,13 +1,14 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: sx-cnp-oss--template-metalstack
-  title: sx-cnp-oss Cluster Template for metalstack cloud
+  name: sx-cnp-oss--template-metalstack2
+  title: sx-cnp-oss Cluster Template for metalstack cloud2
   description: Start metalstack.cloud cluster with ArgoCD
   tags:
     - cloud
     - metalstack
     - baremetal
+    - v1
 spec:
   owner: user:phac008
   type: system
