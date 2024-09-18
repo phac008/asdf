@@ -21,6 +21,9 @@ spec:
     server: https://kubernetes.default.svc
     namespace: ${{values.team}}-${{values.application_id}}
   syncPolicy:
+    managedNamespaceMetadata:
+      labels: 
+        platform-engineer.cloud/kyverno: kubevirt-rolebinding
     automated: 
       prune: true
       selfHeal: true
