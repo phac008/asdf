@@ -1,3 +1,3 @@
 #  ${{values.team}}-apps 
 
-Home of ${{values.team}} Applications
+Home of ${{values.team}} Team Applications
