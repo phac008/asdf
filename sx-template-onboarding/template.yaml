@@ -8,7 +8,7 @@ metadata:
     - onboarding
     - example
     - team
-    - v2
+    - v2.1
 
 spec:
   owner: user:phac008
@@ -98,6 +98,21 @@ spec:
         token: ${{ secrets.USER_OAUTH_TOKEN }}
         gitAuthorName: ${{ user.entity.metadata.name }}
         gitAuthorEmail: ${{ user.entity.spec.profile.email }}
+
+    - id: template-teamrepo
+      name: Fetch reposetup
+      action: fetch:template
+      input:
+        url: ./skeleton
+        targetPath: .
+        copyWithoutRender: []
+        values:
+          description: ${{ parameters.description }}
+          team: ${{ steps['catalogFetchGroup'].output.entity.metadata.name }}
+          repoUrlRepo: ${{ (parameters.repoUrl | parseRepoUrl)["repo"] }}
+          repoUrlowner: ${{ (parameters.repoUrl | parseRepoUrl)["owner"] }}
+          environments: ${{ parameters.environments }}
+          argocdtarget: ${{ parameters.argocdtarget }}
 
     - id: repocreate
       name: create team-apps Github repo
