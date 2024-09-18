@@ -54,13 +54,12 @@ spec:
         environments:
           title: Environments
           type: string
-          description: Environments needed by this vm
+          description: Panned Stage for new Cluster?
           enum:
             - prod
             - test
             - qa
           uniqueItems: true
-          default: prod
         argocdtarget:
           title: argocd target directory
           type: string
