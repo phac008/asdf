@@ -8,7 +8,7 @@ metadata:
     - onboarding
     - example
     - team
-    - v4
+    - v5
 
 spec:
   owner: user:phac008
@@ -122,11 +122,14 @@ spec:
         repoUrl: github.com?repo=${{ steps['catalogFetch'].output.entity.metadata.name }}-apps&owner=suxess-it
         title: team-apps repo for ${{ steps['catalogFetch'].output.entity.metadata.name }}
         description: team-apps repo for ${{ steps['catalogFetch'].output.entity.metadata.name }}
-        defaultBranch: main
         token: ${{ secrets.USER_OAUTH_TOKEN }}
         gitAuthorName: ${{ user.entity.metadata.name }}
         gitAuthorEmail: ${{ user.entity.spec.profile.email }}
         gitCommitMessage: Team Onboarding for ${{ steps['catalogFetch'].output.entity.metadata.name }}
+        repoVisibility: public
+        deleteBranchOnMerge: true
+        protectDefaultBranch: false
+        defaultBranch: main
 
   output:
     remoteUrl: '{{ steps.publish.output.remoteUrl }}'
