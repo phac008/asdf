@@ -140,7 +140,7 @@ spec:
           environments: ${{ parameters.environments }}
 
     - id: pull-request-applicationsetup
-      name: make a pr to ${{ steps['catalogFetchGroup'].output.entity.metadata.name }}-apps repo with additional applicationsetup
+      name: make a pr to team-apps repo with additional applicationsetup
       action: publish:github:pull-request
       input:
         sourcePath: ./applicationsetup
@@ -152,6 +152,7 @@ spec:
         token: ${{ secrets.USER_OAUTH_TOKEN }}
         gitAuthorName: ${{ user.entity.metadata.name }}
         gitAuthorEmail: ${{ user.entity.spec.profile.email }}
+        update: true
 
     - id: register
       name: Register Catalog
