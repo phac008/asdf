@@ -103,7 +103,7 @@ spec:
       name: create team-apps Github repo
       action: github:repo:push
       input:
-        repoUrl: github.com?repo=${{ steps['catalogFetch'].output.entity.metadata.name }}&owner=suxess-it
+        repoUrl: github.com?repo=${{ steps['catalogFetch'].output.entity.metadata.name }}-apps&owner=suxess-it
         title: team-apps repo for ${{ steps['catalogFetch'].output.entity.metadata.name }}
         description: team-apps repo for ${{ steps['catalogFetch'].output.entity.metadata.name }}
         defaultBranch: main
