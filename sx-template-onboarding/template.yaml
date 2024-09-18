@@ -8,7 +8,7 @@ metadata:
     - onboarding
     - example
     - team
-    - v3
+    - v4
 
 spec:
   owner: user:phac008
@@ -116,7 +116,7 @@ spec:
 
     - id: repocreate
       name: create team-apps Github repo
-      action: github:repo:push
+      action: publish:github
       input:
         repoUrl: github.com?repo=${{ steps['catalogFetch'].output.entity.metadata.name }}-apps&owner=suxess-it
         title: team-apps repo for ${{ steps['catalogFetch'].output.entity.metadata.name }}
@@ -125,6 +125,7 @@ spec:
         token: ${{ secrets.USER_OAUTH_TOKEN }}
         gitAuthorName: ${{ user.entity.metadata.name }}
         gitAuthorEmail: ${{ user.entity.spec.profile.email }}
+        gitCommitMessage: Team Onboarding for ${{ steps['catalogFetch'].output.entity.metadata.name }}
 
   output:
     remoteUrl: '{{ steps.publish.output.remoteUrl }}'
