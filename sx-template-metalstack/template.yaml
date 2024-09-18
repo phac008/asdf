@@ -138,6 +138,8 @@ spec:
           repoUrlRepo: ${{ (parameters.repoUrl | parseRepoUrl)["repo"] }}
           repoUrlowner: ${{ (parameters.repoUrl | parseRepoUrl)["owner"] }}
           environments: ${{ parameters.environments }}
+          argocdtarget: ${{ parameters.argocdtarget }}
+
 
     - id: pull-request-applicationsetup
       name: make a pr to team-apps repo with additional applicationsetup
