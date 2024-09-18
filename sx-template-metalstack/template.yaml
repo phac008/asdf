@@ -1,9 +1,9 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: sx-cnp-oss--template-metalstack2
-  title: sx-cnp-oss Cluster Template for metalstack cloud2
-  description: Start metalstack.cloud cluster with ArgoCD
+  name: sx-cnp-oss-template-metalstack2
+  title: Create Cöuster on metalstack.cloud
+  description: Start metalstack.cloud cluster and integrate to ArgoCD
   tags:
     - cloud
     - metalstack
@@ -18,10 +18,10 @@ spec:
       required:
         - cluster_id
         - description
-        - owner
+        - team
         - instances
         - type
-        - environments
+        - argocdtarget
       properties:
         cluster_id:
           title: Name
@@ -31,14 +31,12 @@ spec:
           title: Description
           type: string
           description: Help others understand what this cluster is for.
-        owner:
-          title: Owner
+        team:
+          title: Choose Team
           type: string
-          description: Owner of this cluster
-          ui:field: OwnerPicker
-          ui:options:
-            allowedKinds: 
-              - User
+          description: Owning Team of this VM, target repo for argo application
+          ui:field: MyGroupsPicker
+          ui:options: {}
         instances:
           title: Number of Nodes (max. 3)
           type: string       
@@ -53,16 +51,12 @@ spec:
               - n1-medium-x86
           uniqueItems: true
           ui:widget: checkboxes
-        environments:
-          title: Environments
-          type: array
-          description: Environments needed by this vm
-          items:
-            type: string
-            enum:
-              - prod
-              - test
-              - qa
+        argocdtarget:
+          title: argocd target directory
+          type: string
+          description: Directory where argo application manifest is beeing deployed in team repo
+          default: k3d-apps
+
 ## TODO: Maintenancewindow
     - title: Choose a location
       required:
@@ -82,6 +76,12 @@ spec:
             allowedHosts:
               - github.com
   steps:
+    - id: catalogFetchGroup
+      name: Fetch Context
+      action: catalog:fetch
+      input:
+        entityRef: ${{ parameters.team }}
+
     - id: template-gitops
       name: Fetch Skeleton + Template
       action: fetch:template
@@ -92,7 +92,7 @@ spec:
         values:
           cluster_id: ${{ parameters.cluster_id }}
           description: ${{ parameters.description }}
-          owner: ${{ parameters.owner }}
+          owner: ${{ parameters.team }}
           instances: ${{ parameters.instances }}
           type: ${{ parameters.type }}
           environments: ${{ parameters.environments }}
@@ -135,7 +135,7 @@ spec:
       input:
         sourcePath: ./applicationsetup
         targetPath: '.'
-        repoUrl: github.com?repo=approved-application&owner=suxess-it
+        repoUrl: github.com?repo=${{ steps['catalogFetchGroup'].output.entity.metadata.name }}-apps&owner=suxess-it
         branchName: ${{ parameters.cluster_id }}
         title: argoapps and system config for ${{ parameters.cluster_id }}
         description: argoapps and system config for ${{ parameters.cluster_id }}
