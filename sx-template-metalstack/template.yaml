@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: sx-cnp-oss-template-metalstack2
-  title: Create Cöuster on metalstack.cloud
+  title: Create Cluster on metalstack.cloud
   description: Start metalstack.cloud cluster and integrate to ArgoCD
   tags:
     - cloud
