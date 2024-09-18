@@ -61,7 +61,6 @@ spec:
               - test
               - qa
           uniqueItems: true
-          ui:widget: checkboxes
           default: prod
         argocdtarget:
           title: argocd target directory
