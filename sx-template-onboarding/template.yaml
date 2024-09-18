@@ -8,6 +8,7 @@ metadata:
     - onboarding
     - example
     - team
+    - v2
 
 spec:
   owner: user:phac008
@@ -85,7 +86,7 @@ spec:
                 organization: suxess-it
 
     - id: publish
-      name: Publish to Github
+      name: Publish new Version of team configuration
       action: publish:github:pull-request
       input:
         repoUrl: github.com?repo=sx-cnp-oss&owner=suxess-it
@@ -94,6 +95,18 @@ spec:
         targetPath: platform-apps/charts/team-onboarding
         branchName: onboarding-team-${{ steps['catalogFetch'].output.entity.metadata.name }}
         targetBranchName: main
+        token: ${{ secrets.USER_OAUTH_TOKEN }}
+        gitAuthorName: ${{ user.entity.metadata.name }}
+        gitAuthorEmail: ${{ user.entity.spec.profile.email }}
+
+    - id: repocreate
+      name: create team-apps Github repo
+      action: github:repo:push
+      input:
+        repoUrl: github.com?repo=${{ steps['catalogFetch'].output.entity.metadata.name }}&owner=suxess-it
+        title: team-apps repo for ${{ steps['catalogFetch'].output.entity.metadata.name }}
+        description: team-apps repo for ${{ steps['catalogFetch'].output.entity.metadata.name }}
+        defaultBranch: main
         token: ${{ secrets.USER_OAUTH_TOKEN }}
         gitAuthorName: ${{ user.entity.metadata.name }}
         gitAuthorEmail: ${{ user.entity.spec.profile.email }}
