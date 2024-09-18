@@ -51,6 +51,16 @@ spec:
               - n1-medium-x86
           uniqueItems: true
           ui:widget: checkboxes
+        environments:
+          title: Environments
+          type: array
+          description: Environments needed by this vm
+          items:
+            type: boolean
+            enum:
+              - prod
+              - test
+              - qa
         argocdtarget:
           title: argocd target directory
           type: string
@@ -130,7 +140,7 @@ spec:
           environments: ${{ parameters.environments }}
 
     - id: pull-request-applicationsetup
-      name: make a pr to approved-application repo with additional applicationsetup
+      name: make a pr to ${{ steps['catalogFetchGroup'].output.entity.metadata.name }}-apps repo with additional applicationsetup
       action: publish:github:pull-request
       input:
         sourcePath: ./applicationsetup
