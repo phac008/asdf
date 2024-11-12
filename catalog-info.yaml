@@ -18,7 +18,6 @@ metadata:
     argocd/app-name: ccc
     argocd/project-name: team1-project
     backstage.io/kubernetes-label-selector: app=ccc
-    #argocd/app-namespace: team1-ccc
     backstage.io/kubernetes-namespace: team1-ccc
     kubevirt-manager: "https://kubevirt-manager-metalstack.platform-engineer.cloud/"
     backstage.io/techdocs-ref: dir:.
