@@ -1,0 +1,24 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: harbor
+  title: harbor
+  description: harbor
+  annotations:
+    github.com/project-slug: suxess-it/kubriX
+    backstage.io/techdocs-ref: url:https://github.com/suxess-it/kubriX/tree/main/backstage-resources
+    backstage.io/kubernetes-namespace: backstage
+    backstage.io/kubernetes-id: backstage-database
+    # This will use harbor.baseUrl
+    goharbor.io/repository-slug: test/test
+    # OR
+    # This will use harbor.instances[].baseUrl based on the matching host
+    #goharbor.io/repository-slug: zid-registry.uibk.ac.at/harbor/project/79/repository
+    # OR https://zid-registry.uibk.ac.at/harbor/projects/79/repositories
+    # This will fetch the first image from harbor.baseUrl and the second image from harbor.instances[].baseUrl
+    #goharbor.io/repository-slug: backstage-test/repository, zid-registry.uibk.ac.at/project/79/repository
+spec:
+  type: service
+  system: sx-idp
+  owner: sx-authors
+  lifecycle: production
