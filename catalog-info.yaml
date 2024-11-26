@@ -10,7 +10,7 @@ metadata:
     backstage.io/kubernetes-namespace: backstage
     backstage.io/kubernetes-id: backstage-database
     # This will use harbor.baseUrl
-    goharbor.io/repository-slug: harbor.lab.suxessit.k8s.cloud.uibk.ac.at/test/test
+    goharbor.io/repository-slug: test/test
     # OR
     # This will use harbor.instances[].baseUrl based on the matching host
     #goharbor.io/repository-slug: zid-registry.uibk.ac.at/harbor/project/79/repository
