@@ -11,7 +11,7 @@ metadata:
     backstage.io/kubernetes-id: backstage-database
     # This will use harbor.baseUrl
     goharbor.io/repository-slug: test/hello
-    vault.io/secrets-path: 'demo'
+    vault.io/secrets-path: 'demo/minio'
     vault.io/secrets-engine: 'sx-cnp-oss-kv'
 spec:
   type: service
